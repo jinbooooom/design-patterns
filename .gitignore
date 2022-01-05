@@ -2,7 +2,9 @@ r
 t
 s
 .vscode
-build
+books
+build/*
+main
 
 # Prerequisites
 *.d

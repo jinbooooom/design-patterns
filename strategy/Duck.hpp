@@ -43,6 +43,16 @@ public:
 
     // 每个鸭子有不同的外观，交给子类去实现
     virtual void display() = 0;
+
+    void setFlyBehavior(std::unique_ptr<FlyBehavior> fb)
+    {
+        flyBehavior = std::move(fb);
+    }
+
+    void setQuackBehavior(std::unique_ptr<QuackBehavior> qb)
+    {
+        quackBehavior = std::move(qb);
+    }
 };
 
 #endif

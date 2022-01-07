@@ -3,6 +3,9 @@
 #include "DecoyDuck.hpp"
 #include "RubberDuck.hpp"
 
+#include "FlyWithWings.hpp"
+#include "MuteQuack.hpp"
+
 #include <iostream>
 
 int main()
@@ -32,6 +35,16 @@ int main()
     std::cout << std::endl;
 
     RubberDuck rubberDuckie;
+    rubberDuckie.display();
+    rubberDuckie.swim();
+    rubberDuckie.performQuack();
+    rubberDuckie.performFly();
+
+    // 现在让 rubberDuckie 不能叫, 但可以飞。
+    rubberDuckie.setQuackBehavior(std::make_unique<MuteQuack>());
+    rubberDuckie.setFlyBehavior(std::make_unique<FlyWithWings>());
+    
+    std::cout << "after rubberDuckie set behavior" << std::endl;
     rubberDuckie.display();
     rubberDuckie.swim();
     rubberDuckie.performQuack();

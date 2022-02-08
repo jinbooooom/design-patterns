@@ -44,11 +44,17 @@ public:
     // 每个鸭子有不同的外观，交给子类去实现
     virtual void display() = 0;
 
+    /**
+     * 客户端可以重新设置行为（算法）
+    */
     void setFlyBehavior(std::unique_ptr<FlyBehavior> fb)
     {
         flyBehavior = std::move(fb);
     }
 
+    /**
+     * 客户端可以重新设置行为（算法）
+    */
     void setQuackBehavior(std::unique_ptr<QuackBehavior> qb)
     {
         quackBehavior = std::move(qb);

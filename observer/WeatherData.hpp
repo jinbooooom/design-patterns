@@ -9,10 +9,10 @@
 class WeatherData : public Subject
 {
 private:
-    std::unordered_set<Observer *> observers;
-    float temperature;
-    float humidity;
-    float pressure;
+    std::unordered_set<Observer *> observers; // 有一个无序set用来记录注册的观察者
+    float temperature;                        // 温度
+    float humidity;                           // 湿度
+    float pressure;                           // 压强
 
 public:
     void registerObserver(Observer *o)

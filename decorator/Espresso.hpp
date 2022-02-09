@@ -8,7 +8,7 @@ class Espresso : public Beverage
 public:
     std::string getDescription()
     {
-        return "Espresso";
+        return "Espresso"; // 浓咖啡
     }
 
     double cost()

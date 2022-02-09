@@ -30,6 +30,7 @@ public:
     }
 
     virtual double cost() = 0;
+    
     Beverage()
     {
         mylog;

@@ -8,7 +8,7 @@ class HouseBlend : public Beverage
 public:
     std::string getDescription()
     {
-        return "House Blend Coffee";
+        return "House Blend Coffee"; // 家庭混合咖啡
     }
 
     double cost()

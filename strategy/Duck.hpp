@@ -9,10 +9,11 @@
 
 class Duck
 {
-public:
+private:
     std::unique_ptr<FlyBehavior> flyBehavior;
     std::unique_ptr<QuackBehavior> quackBehavior;
 
+public:
     Duck(std::unique_ptr<FlyBehavior> fb,
          std::unique_ptr<QuackBehavior> qb)
         : flyBehavior(std::move(fb)),

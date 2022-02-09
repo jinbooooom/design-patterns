@@ -11,32 +11,31 @@
 class CurrentConditionsDisplay : public Observer, public DisplayElement
 {
 private:
-    float temperature;                    // 温度
-    float humidity;                       // 湿度
-    std::shared_ptr<Subject> weatherData; // 以后想要取消注册，所以有了对 Subject 的引用会比较方便
+    float temperature; // 温度
+    float humidity;    // 湿度
 
 public:
     CurrentConditionsDisplay(std::shared_ptr<Subject> w)
-        : temperature(0.0f),
-          humidity(0.0f),
-          weatherData(std::move(w))
+        : Observer(std::move(w)),
+          temperature(0.0f),
+          humidity(0.0f)
     {
         registerSubject();
     }
 
     void registerSubject()
     {
-        weatherData->registerObserver(this);
+        mSubject->registerObserver(this);
     }
 
     void removeSubject()
     {
-        weatherData->removeObserver(this);
+        mSubject->removeObserver(this);
     }
 
     ~CurrentConditionsDisplay()
     {
-        weatherData->removeObserver(this);
+        mSubject->removeObserver(this);
     }
 
     void update(float t, float h, float p)

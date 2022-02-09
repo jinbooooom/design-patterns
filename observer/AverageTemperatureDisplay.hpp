@@ -14,32 +14,31 @@ class AverageTemperatureDisplay : public Observer, public DisplayElement
 private:
     float temperature;
     float humidity;
-    unsigned int cnt;                     // 记录更新的次数，用于统计均值
-    unsigned int sumTemperature;          // 记录累计的温度，用于统计均值
-    std::shared_ptr<Subject> weatherData; // 考虑到以后想要取消注册，所以有了对 Subject 的引用会比较方便
+    unsigned int cnt;            // 记录更新的次数，用于统计均值
+    unsigned int sumTemperature; // 记录累计的温度，用于统计均值
 
 public:
     AverageTemperatureDisplay(std::shared_ptr<Subject> w)
-        : temperature(0.0f),
-          humidity(0.0f),
-          weatherData(std::move(w))
+        : Observer(std::move(w)),
+          temperature(0.0f),
+          humidity(0.0f)
     {
         registerSubject();
     }
 
     void registerSubject()
     {
-        weatherData->registerObserver(this);
+        mSubject->registerObserver(this);
     }
 
     void removeSubject()
     {
-        weatherData->removeObserver(this);
+        mSubject->removeObserver(this);
     }
 
     ~AverageTemperatureDisplay()
     {
-        weatherData->removeObserver(this);
+        mSubject->removeObserver(this);
     }
 
     void update(float t, float h, float p)

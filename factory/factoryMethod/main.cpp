@@ -5,8 +5,8 @@
 
 int main()
 {
-    auto nyStore = new NYPizzaStore();
-    auto chicagoStore = new ChicagoPizzaStore();
+    auto nyStore = std::make_unique<NYPizzaStore>();
+    auto chicagoStore = std::make_unique<ChicagoPizzaStore>();
 
     auto nyCheese = nyStore->orderPizza("cheese");
     auto chicagoCheese = chicagoStore->orderPizza("cheese");

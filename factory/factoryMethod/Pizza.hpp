@@ -39,6 +39,7 @@ void Pizza::prepare() const
         std::cout << "  " + topping + "\n";
     }
 }
+
 void Pizza::bake() const
 {
     std::cout << "Baking for 25 min at 350 degrees " << std::endl;

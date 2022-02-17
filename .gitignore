@@ -5,6 +5,7 @@ s
 books
 build/*
 main
+Thumbs.db
 
 # Prerequisites
 *.d

@@ -9,31 +9,31 @@
 class Proxy : public Subject
 {
 private:
-    std::unique_ptr<Subject> subject; // 代理具有对真实主题的引用
+    std::unique_ptr<Subject> mSubject; // 代理具有对真实主题的引用
 
 public:
     void request() override
     {
-        if (nullptr == subject)
+        if (nullptr == mSubject)
         {
             std::cout << "create proxy" << std::endl;
-            subject = std::make_unique<RealSubject>();
+            mSubject = std::make_unique<RealSubject>();
         }
 
         std::cout << "Call the proxy method Proxy::request()" << std::endl;
-        subject->request();
+        mSubject->request();
     }
 
     int requestAdd(int x, int y) override
     {
-        if (nullptr == subject)
+        if (nullptr == mSubject)
         {
             std::cout << "create proxy" << std::endl;
-            subject = std::make_unique<RealSubject>();
+            mSubject = std::make_unique<RealSubject>();
         }
 
         std::cout << "Call the proxy method Proxy::requestAdd(int, int)" << std::endl;
-        return subject->requestAdd(x, y);
+        return mSubject->requestAdd(x, y);
     }
 };
 

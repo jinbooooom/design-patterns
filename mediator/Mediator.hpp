@@ -2,7 +2,7 @@
 #define MEDIATOR_HPP
 
 #include "Colleague.hpp"
-
+#include <list>
 class Mediator
 {
 public:

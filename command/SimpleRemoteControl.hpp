@@ -8,8 +8,8 @@ static const unsigned int COMMAND_MAX(2);
 class SimpleRemoteControl
 {
 private:
-    Command *mOnCommand[COMMAND_MAX];
-    Command *mOffCommand[COMMAND_MAX];
+    Command *mOnCommands[COMMAND_MAX];
+    Command *mOffCommands[COMMAND_MAX];
     Command *undoCommand = new UndoCommand();
 
 public:
@@ -17,8 +17,8 @@ public:
     {
         for (unsigned int i = 0; i < COMMAND_MAX; ++i)
         {
-            mOnCommand[i] = undoCommand;
-            mOnCommand[i] = undoCommand;
+            mOnCommands[i] = undoCommand;
+            mOnCommands[i] = undoCommand;
         }
     }
 
@@ -34,8 +34,8 @@ public:
     {
         if (slot < COMMAND_MAX)
         {
-            mOnCommand[slot] = onCommand;
-            mOffCommand[slot] = offCommand;
+            mOnCommands[slot] = onCommand;
+            mOffCommands[slot] = offCommand;
         }
         else
         {
@@ -51,7 +51,7 @@ public:
         }
         else
         {
-            mOnCommand[slot]->execute();
+            mOnCommands[slot]->execute();
         }
     }
 
@@ -63,7 +63,7 @@ public:
         }
         else
         {
-            mOffCommand[slot]->execute();
+            mOffCommands[slot]->execute();
         }
     }
 };
